@@ -15,35 +15,38 @@ import static java.util.stream.Collectors.toList;
 public class minMaxSum {
 
     public static void miniMaxSum(List<Integer> arr) {
-        //add all except min
+        //placeholders for minSum & maxSum
         long minSum = 0;
         long maxSum = 0;
 
+        //initial max & min values: made to be replaced
         long max = 0;
         long min = 99999999;
 
-
+        //loop through numbers in array, find the maximum & minimum number in array
         for(int number : arr){
+            System.out.println("Number: " + number);
+
             if(number > max){
-                max = number;
+                max = number; //set max number
             }
-        }
-        for(int number : arr){
+
             if(number < min){
-                min = number;
+                min = number; //set minimum number
             }
         }
 
+        System.out.println("minimum: " + min);
+        System.out.println("maximum: " + max);
+
+        //loop through all numbers and add
         for(int number: arr){
-            //add all except max
-            if(number != max){
-                minSum += number;
-            }
-            //add all except min
-            if(number != min){
-                maxSum += number;
-            }
+            minSum += number;
+            maxSum += number;
         }
+
+        minSum = minSum - max; //subtract maximum number
+        maxSum = maxSum - min; //subtract minimum number
 
         System.out.printf("%d %d", minSum, maxSum);
 
@@ -51,11 +54,11 @@ public class minMaxSum {
 
     public static void main(String[] args){
         List<Integer> list = new ArrayList<Integer>();
-        list.add(140537896);
-        list.add(243908675);
-        list.add(670291834);
-        list.add(923018467);
-        list.add(52071846);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
         miniMaxSum(list);
         //expected 1575456874 2357937445
 

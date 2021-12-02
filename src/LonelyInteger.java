@@ -19,13 +19,13 @@ public class LonelyInteger {
      * The function is expected to return an INTEGER.
      * The function accepts INTEGER_ARRAY a as parameter.
      */
-
-    public static int lonelyInteger(List<Integer> a) {
-        int unique = 0;
-
-
-
-        // Write your code here
-
-    }
+//
+//    public static int lonelyInteger(List<Integer> a) {
+//        int unique = 0;
+//
+//
+//
+//        // Write your code here
+//
+//    }
 }
