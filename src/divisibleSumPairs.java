@@ -13,15 +13,20 @@ import static java.util.stream.Collectors.toList;
 
 public class divisibleSumPairs {
     public static int tester(int n, int k, List<Integer> ar) {
-        int total = 0;
-        //run through array
-        for(int i = 0; i < n-1; i++ )
-            //run through sum for remainder of array
+
+        int total = 0; //placeholder for total
+
+        //run though each number in array except for the last number (n-1)
+        for(int i = 0; i < n-1; i++ ){
+            //add each remaining number in array to current number
             for(int j = i + 1; j < n; j++){
+
+                //if the sum of two numbers is divisible by k --> add to total
                 if((ar.get(i) + ar.get(j)) % k == 0){
                     total++;
                 }
             }
+        }
         return total;
     }
 
@@ -44,22 +49,3 @@ public class divisibleSumPairs {
         System.out.println(tester(5, 3, list2)); //should be 5
     }
 }
-
-//public static int tester(int n, int k, List<Integer> ar) {
-//        // Write your code here
-//        int total = 0;
-//
-//        for(int num : ar) {
-//            System.out.println("First numb: " + num + "\n");
-//
-//            for(int i = num; i < ar.size() - 1; i++){
-//                int nextNumb = ar.get(i);
-//                if((num + nextNumb) % k == 0){
-//                    System.out.printf("%d + %d = " + (num + nextNumb) + "\n", num, nextNumb);
-//                    total++;
-//                    System.out.println(total + "\n");
-//                }
-//            }
-//        }
-//        return total;
-//    }
