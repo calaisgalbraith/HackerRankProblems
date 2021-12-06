@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.Array;
 import java.math.*;
 import java.nio.file.Paths;
 import java.security.*;
@@ -19,25 +20,8 @@ public class minMaxSum {
         long minSum = 0;
         long maxSum = 0;
 
-        //initial max & min values: made to be replaced
-        long max = 0;
-        long min = 99999999;
-
-        //loop through numbers in array, find the maximum & minimum number in array
-        for(int number : arr){
-            System.out.println("Number: " + number);
-
-            if(number > max){
-                max = number; //set max number
-            }
-
-            if(number < min){
-                min = number; //set minimum number
-            }
-        }
-
-        System.out.println("minimum: " + min);
-        System.out.println("maximum: " + max);
+        //sort array
+        Collections.sort(arr);
 
         //loop through all numbers and add
         for(int number: arr){
@@ -45,8 +29,8 @@ public class minMaxSum {
             maxSum += number;
         }
 
-        minSum = minSum - max; //subtract maximum number
-        maxSum = maxSum - min; //subtract minimum number
+        minSum = minSum - arr.get(arr.size()-1); //subtract maximum number
+        maxSum = maxSum - arr.get(0); //subtract minimum number
 
         System.out.printf("%d %d", minSum, maxSum);
 
