@@ -1,3 +1,5 @@
+package finished;
+
 public class CountingValleys {
 
     public static int countingValleys(int steps, String path) {
