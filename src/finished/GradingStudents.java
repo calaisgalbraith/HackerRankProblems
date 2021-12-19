@@ -6,7 +6,6 @@ import java.util.List;
 public class GradingStudents {
 
     public static List<Integer> gradingStudents(List<Integer> grades) {
-=
         List<Integer> updatedGrades = new ArrayList<>();
 
         for (int grade: grades) {

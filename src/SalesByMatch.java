@@ -1,49 +1,62 @@
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class SalesByMatch {
 
+    public static void main(String[] args) {
+
+        List<Integer> socks = new ArrayList<>();
+        socks.add(10);
+        socks.add(20);
+        socks.add(20);
+        socks.add(10);
+        socks.add(10);
+        socks.add(30);
+        socks.add(50);
+        socks.add(10);
+        socks.add(20);
+
+        System.out.println(sockMerchant(10,socks));
+    }
+
 
     public static int sockMerchant(int n, List<Integer> ar) {
         int pairs = 0; //placeholder for pairs
 
-        List<Integer> sockNumbers = new ArrayList<>(); //list to hold number of each sock type
+        Collections.sort(ar); //sort array numerically
 
-        Collections.sort(ar); //sort array
+        int sockNumber = 1; //number to keep track of how many of each type of sock
+        int sockType = ar.get(0); //set sock type to first sock in array
 
-        int sockNumber = 1;
+        //loop through each sock in array
+        for(int i = 1; i < ar.size(); i++) {
 
-        for(int i = 0; i < ar.size(); i++) {
+            System.out.println("Sock Type: " + ar.get(i));
 
-            if(ar.get(i).equals(ar.get(i + 1))){
-                sockNumber++; //since matching, increase total # of sock type
-                continue;
+            //if current sock == previous sock type
+            if(ar.get(i) == sockType){
+                sockNumber++;
+
+                //if sockNumber == 2 --> a pair
+                if(sockNumber % 2 == 0){
+                    pairs++; //increase pairs
+                    sockNumber = 0; //reset sockNumber
+                }
+
             }
+
+            //if current sock != previous sock type
             else{
-//                System.out.println("Sock Number: " + sockNumber);
-                sockNumbers.add(sockNumber); //add total # of sock type to list
-                sockNumber = 1; //reset sockNumber
-            }
-        }
+                //reset sockType
+                sockType = ar.get(i);
 
-
-        for (int number: sockNumbers) {
-            if(number % 2 == 0){
-                System.out.println("Number: " + number);
-                System.out.println("Number divided by 2: " + number / 2);
-//                pairs += number / 2; //add number / 2 to give number of pairs
-//                System.out.println("Updated Pairs: " + pairs);
-            }
-            else{
-                System.out.println("Number: " + number);
-                System.out.println("Number divided by 2 rounded : " + Math.round(number / 2));
-//                pairs += Math.round(number / 2) - 1; //add number /2 -1 to offset unmatched sock pairs
-//                System.out.println("Updated Pairs: " + pairs);
+                //reset sockNumber
+                sockNumber = 1;
             }
         }
 
         return pairs;
-
     }
 }
