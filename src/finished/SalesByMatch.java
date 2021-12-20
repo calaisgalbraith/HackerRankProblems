@@ -1,3 +1,5 @@
+package finished;
+
 import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,8 +34,6 @@ public class SalesByMatch {
 
         //loop through each sock in array
         for(int i = 1; i < ar.size(); i++) {
-
-            System.out.println("Sock Type: " + ar.get(i));
 
             //if current sock == previous sock type
             if(ar.get(i) == sockType){
