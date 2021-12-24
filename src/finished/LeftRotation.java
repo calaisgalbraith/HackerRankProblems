@@ -1,3 +1,5 @@
+package finished;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,11 +7,8 @@ public class LeftRotation {
 
     public static List<Integer> rotateLeft(int d, List<Integer> arr) {
 
-        int i = 1;
 
-        //while int i <= d, rotate array
-        while(i <= d){
-
+        for(int i = 1; i <= d; i++){
             //get first index of array
             int shiftingNumber = arr.get(0);
 
@@ -19,11 +18,8 @@ public class LeftRotation {
             //add to end of array
             arr.add(shiftingNumber);
 
-            System.out.println(arr.toString());
-
-            //increase i
-            i++;
         }
+
         return arr;
 
     }
