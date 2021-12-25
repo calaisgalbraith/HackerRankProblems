@@ -1,3 +1,5 @@
+package finished;
+
 public class StrongPassword {
 
     // Return the minimum number of characters to make the password strong
