@@ -7,7 +7,7 @@ public class GamingArray1 {
     //Bob always plays first.
     //In a single move, a player chooses the maximum element in the array.
         //They removes it and all elements to its right.
-        // For example, if the starting array [2, 3, 4, 5, 1] then it becomes [2, 3] after removing .
+        // For example, if the starting array [2, 3, 5, 4, 1] then it becomes [2, 3] after removing .
     //The two players alternate turns.
     //The last player who can make a move wins.
 
