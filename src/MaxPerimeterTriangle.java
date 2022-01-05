@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MaxPerimeterTriangle {
@@ -43,12 +45,38 @@ public class MaxPerimeterTriangle {
                     //call method to check if triangle
                     if((a + b > c) && (b + c > a) && (a + c > b)){
 
-                        //check to see if a + b + c is max
+                        //check to see if a + b + c is new max
                         if(a + b + c > maxPerimeter){
                             //if yes, set sides values to be current a, b, c
                             sides.set(0, a);
                             sides.set(1, b);
                             sides.set(2, c);
+                        }
+
+                        //if multiple cases of maximum perimeter
+                        if(a + b + c == maxPerimeter){
+                            List<Integer> compareSides = Arrays.asList(a, b, c); //create list to hold a, b, c
+
+                            Collections.sort(compareSides); //sort compareSides
+                            Collections.sort(sides); //sort sides
+
+                            //if a, b, c has larger max size --> set sides to be a, b, c
+                            if(sides.get(2) < compareSides.get(2)){
+                                sides.set(0, a);
+                                sides.set(1, b);
+                                sides.set(2, c);
+                            }
+
+                            //if both have equal max sides, see which has larger min size
+                            if(sides.get(2) == compareSides.get(2)){
+
+                                //if a, b, c has larger min size --> set sides to be a, b, c
+                                if(sides.get(0) < compareSides.get(0)){
+                                    sides.set(0, a);
+                                    sides.set(1, b);
+                                    sides.set(2, c);
+                                }
+                            }
                         }
                     }
                 }
@@ -62,25 +90,23 @@ public class MaxPerimeterTriangle {
             sides.set(0, -1);
         }
 
+        //sort sides
+        Collections.sort(sides);
+
         return sides;
     }
 
     public static void main(String[] args) {
 
         List<Integer> test = new ArrayList<>(); //3, 4, 5
-        test.add(1);
-        test.add(2);
         test.add(3);
-        test.add(4);
-        test.add(5);
-        test.add(10);
+        test.add(9);
+        test.add(2);
+        test.add(15);
+        test.add(3);
 
-        List<Integer> testTwo = new ArrayList<>(); //-1
-        testTwo.add(1);
-        testTwo.add(2);
-        testTwo.add(3);
 
         System.out.println(maximumPerimeterTriangle(test).toString());
-        System.out.println(maximumPerimeterTriangle(testTwo).toString());
+
     }
 }
