@@ -3,39 +3,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//Given a square grid of characters in the range ascii[a-z], rearrange elements of each row alphabetically, ascending.
+// Determine if the columns are also in ascending alphabetical order, top to bottom. Return YES if they are or NO if they are not.
+
 public class GridChallenge {
 
-    //return String YES or NO, depending on if each row in List is in alphabetical order
 
-    public static String gridChallenge(List<String> grid) {
+    public static String gridChallenge(List<String> words) {
 
-        //go through each string in list and sort alphabetically
-        for(String word : grid){
+        List<String> sortedWords = new ArrayList<>(); //placeholder for alphabetically sorted rows
+
+        //sort each string in list alphabetically
+        for(String word: words){
             char[] placeholder = word.toCharArray(); //make char array from string
             Arrays.sort(placeholder); //sort char array
-            word = placeholder.toString(); //set word to be sorted char array
-
+            sortedWords.add(String.valueOf(placeholder)); //add sorted string to sorted words List
         }
 
-        //get length of words
-        int longest = grid.get(0).length();
-
-        //go through each letter of a word
-        for(int i = 0; i < longest; i++){
+        //go through each letter at a specific index and see if they are sorted alphabetially in columns
+        for(int i = 0; i < sortedWords.get(0).length(); i++){
 
             //get char at index i for first string in list
-            char letter = grid.get(0).charAt(i);
+            char letter = sortedWords.get(0).charAt(i);
 
-            //go through each string in list and see if letter at index i is sorted for each
-            for(int j = 1; j < grid.size(); j++){
+            //go through each string in remaining columns and see if letter at index i is greater alphabetically
+            for(int j = 1; j < sortedWords.size(); j++){
 
-                //checks that next letter in column is not less than letter before it (if so, not alpha)
-                if(grid.get(j).charAt(i) < letter ){
+                //check if next letters is less than letter before it (if not, then not sorted alphabetically)
+                if(sortedWords.get(j).charAt(i) < letter){
                     return "NO";
                 }
 
-                //set letter to be next letter
-                letter = grid.get(j).charAt(i);
+                //reset letter to check against index in next column
+                letter = sortedWords.get(j).charAt(i);
             }
         }
 
@@ -45,7 +45,7 @@ public class GridChallenge {
     public static void main(String[] args) {
         List<String> test = new ArrayList<>();
         test.add("eabcd");
-        test.add("fghij");
+        test.add("eghij");
         test.add("olkmn");
         test.add("trpqs");
         test.add("xywuv");
